@@ -1,6 +1,8 @@
 import { lazy } from "react";
 
 const HomePage = lazy(() => import("@/pages/HomePage/HomePage"));
+const LoginPage = lazy(() => import("@/pages/LoginPage/LoginPage"));
+const SignupPage = lazy(() => import("@/pages/SignupPage/SignupPage"));
 
 function lazyLoad(path: string, namedExport: string) {
   return lazy(async () => {
@@ -13,4 +15,4 @@ function lazyLoad(path: string, namedExport: string) {
   });
 }
 
-export { HomePage, lazyLoad };
+export { HomePage, LoginPage, SignupPage, lazyLoad };

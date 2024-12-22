@@ -1,5 +1,3 @@
-import React from "react";
-
 const ChatDetailPage = () => {
   return (
     <aside className="w-1/4 bg-accent-dark-400 p-4 lg:flex flex-col hidden">

@@ -37,7 +37,7 @@ const LoginPage: React.FC = () => {
   return (
     <>
       <ToastContainer />
-      <section className="bg-accent-light-600 dark:bg-accent-dark-600 grid grid-cols-1 lg:grid-cols-2 w-screen h-screen p-4 gap-4 overflow-hidden font-archivo">
+      <section className="bg-accent-light-600 dark:bg-accent-dark-600 grid grid-cols-1 lg:grid-cols-2 w-screen h-screen p-4 gap-4 overflow-scroll font-archivo">
         <div className="hidden lg:flex w-full overflow-hidden rounded-2xl">
           <img src={AuthThumbnail} alt="AuthThumbnail" className="w-full aspect-auto object-cover" />
         </div>

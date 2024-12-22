@@ -15,6 +15,7 @@
     "@hookform/resolvers": "^3.9.1",
     "@mui/material": "^6.1.7",
     "antd": "^5.22.2",
+    "antd-input-otp": "^2.1.0",
     "axios": "^1.7.7",
     "i18next": "^23.16.5",
     "i18next-browser-languagedetector": "^8.0.0",

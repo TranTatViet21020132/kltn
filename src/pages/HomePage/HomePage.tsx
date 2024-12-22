@@ -1,5 +1,5 @@
 import SideBarPage from "@/pages/SideBarPage/SideBarPage";
-import ChatPage from "@/pages/ChatPage/ChatPage";
+import ChatPage from "@/pages/HomePage/ChatPage/ChatPage";
 import ChatDetailPage from "@/pages/ChatDetailPage/ChatDetailPage";
 
 

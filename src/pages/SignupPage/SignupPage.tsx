@@ -5,7 +5,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { Link } from 'react-router-dom';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import FormField from '@/components/FormField/FormField';
-import { FormData, UserSchema } from '@/types/Data/Data';
+import { SignupData, UserSignupSchema } from '@/types/Data/Data';
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import AuthThumbnail from '@/assets/images/AuthThumnail.png';
@@ -13,14 +13,14 @@ import GoogleIcon from '@/assets/images/Google.svg';
 import FacebookIcon from '@/assets/images/Facebook.svg';
 
 const SignupPage: React.FC = () => {
-  const { login } = useAuth();
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<FormData>({
-    resolver: zodResolver(UserSchema),
+  const { signup } = useAuth();
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<SignupData>({
+    resolver: zodResolver(UserSignupSchema),
   });
 
-  const onSubmit: SubmitHandler<FormData> = async (data) => {
+  const onSubmit: SubmitHandler<SignupData> = async (data) => {
     try {
-      await login(data);
+      await signup(data);
       toast.success('Signin successful. Redirecting...', {
         position: 'top-center',
         autoClose: 2500,
@@ -44,15 +44,15 @@ const SignupPage: React.FC = () => {
   return (
     <>
       <ToastContainer />
-      <section className="bg-accent-light-600 dark:bg-accent-dark-600 grid grid-cols-1 lg:grid-cols-2 w-screen h-screen p-4 gap-4 overflow-hidden font-archivo">
+      <section className="bg-accent-light-600 dark:bg-accent-dark-600 grid grid-cols-1 lg:grid-cols-2 w-screen h-screen p-4 gap-4 overflow-scroll font-archivo">
         <div className="hidden lg:flex w-full overflow-hidden rounded-2xl">
           <img src={AuthThumbnail} alt="AuthThumbnail" className="w-full aspect-auto object-cover" />
         </div>
         <div className="w-full h-fit flex flex-col items-center self-center gap-2">
           <div className="w-3/4 grid gap-6">
             <div className="grid gap-3 text-center">
-              <h2 className="text-h4 font-bold text-text-light-600 dark:text-text-dark-600">Welcome back!</h2>
-              <p className="text-body4 text-text-dark-400">Welcome back! Please enter your details</p>
+              <h2 className="text-h4 font-bold text-text-light-600 dark:text-text-dark-600">Create an account</h2>
+              <p className="text-body4 text-text-dark-400">Sign up now and unlock exclusive access!</p>
             </div>
 
             <form className="grid gap-2 w-full" onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -66,13 +66,22 @@ const SignupPage: React.FC = () => {
               />
               <FormField
                 type="password"
-                placeholder="Enter Your Password"
+                placeholder="Password"
                 name="password"
                 register={register}
-                error={errors.password}
                 label="Password"
+                error={errors.password}
               />
-              <div className="w-full grid grid-cols-2 items-center">
+
+              <FormField
+                type="password"
+                placeholder="Confirm Password"
+                name="confirmPassword"
+                register={register}
+                label="Confirm Password"
+                error={errors.confirmPassword}
+              />
+              <div className="w-full grid grid-cols-1 items-center">
                 <p className="flex items-center gap-1">
                   <Checkbox
                     sx={{
@@ -83,11 +92,8 @@ const SignupPage: React.FC = () => {
                       padding: 0,
                     }}
                   />
-                  <span className="text-body5 text-text-light-600 dark:text-text-dark-500">Keep me signed in</span>
+                  <span className="text-body5 text-text-light-600 dark:text-text-dark-500">I agree to the Terms and Privacy policy</span>
                 </p>
-                <Link to="/forgot-password" className="text-body5 text-primary-light-500 underline underline-offset-2 text-right">
-                  Forgot password?
-                </Link>
               </div>
               <button
                 className="font-semibold w-full mt-4 bg-primary-light-500 py-3 px-6 rounded-lg text-text-dark-600 hover:brightness-90 text-body4"
@@ -98,9 +104,9 @@ const SignupPage: React.FC = () => {
               </button>
             </form>
             <span className="text-body4 text-text-light-600 dark:text-text-dark-500 text-center">
-              Don't have an account?{' '}
-              <Link to="/signup" className="text-primary-light-500 underline underline-offset-2">
-                Signup
+              Already have an account? Sign in{' '}
+              <Link to="/login" className="text-primary-light-500 underline underline-offset-2">
+                Login
               </Link>
             </span>
           </div>

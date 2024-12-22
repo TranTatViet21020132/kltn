@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, [navigate, setUser, user.is2FAVerified]);
 
   const verify2FACode = useCallback(async (code: string) => {
-    if (code === "0000") {
+    if (code === "123456") {
       setUser({ email: user.email, is2FAVerified: true });
       navigate(HOME_ROUTE);
       console.log(user.email);
